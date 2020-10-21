@@ -1,0 +1,17 @@
+{
+    "name": "wslibs/storage_php_sdk",
+    "description": "云存储服务SDK",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "songyangphp",
+            "email": "475511896@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "wslibs\\storage_php_sdk\\": "src/"
+        }
+    }
+}
