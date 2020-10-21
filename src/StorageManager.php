@@ -10,9 +10,9 @@ class StorageManager
 
     public static $secret;
 
-    public static $upload_url = "http://test.storage.com/storage/index/token/";
+    public static $upload_url = "http://file.wszx.cc/index.php/storage/index";
 
-    public static $check_url = "http://192.168.16.19/WWW2/pdfcenter/public/index.php?app=storage_config@checkSignAndGetConfig";
+    public static $check_url = "http://center.wenshi.wszx.cc/?app=storage_config@checkSignAndGetConfig";
 
     public static $over_time = 180; //token默认过期时间
 
