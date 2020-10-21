@@ -1,5 +1,6 @@
 <?php
 
+namespace wslibs\storage_php_sdk;
 
 use epii\admin\ui\EpiiAdminUi;
 
