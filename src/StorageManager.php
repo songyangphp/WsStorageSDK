@@ -18,16 +18,13 @@ class StorageManager
 
     public static $over_time = 180; //token默认过期时间
 
-    public static function storage_init($app_id, $secret, $check_url = null, $upload_url = null)
+    public static function storage_init($app_id, $secret, $check_url = null, $upload_url = null, $get_dir_url = null)
     {
         self::$app_id = $app_id;
         self::$secret = $secret;
-        if(!is_null($check_url)){
-            self::$check_url = $check_url;
-        }
-        if(!is_null($upload_url)){
-            self::$upload_url = $check_url;
-        }
+        if(!is_null($check_url)) self::$check_url = $check_url;
+        if(!is_null($upload_url)) self::$upload_url = $upload_url;
+        if(!is_null($get_dir_url)) self::$get_dir_url = $get_dir_url;
 
         EpiiAdminUi::addPluginData("ws_upload_yun_get_token","?app=uploadApi@upload&_upload_yun=1");
         EpiiAdminUi::addPluginData("ws_upload_yun_api",self::$upload_url);
@@ -41,12 +38,12 @@ class StorageManager
             '_time' => $time,
             '_token' => md5($time . self::$secret),
             'app_id' => self::$app_id,
-            'overtime' => self::$over_time
+            'overtime' =>  self::$over_time
         ];
 
-        if(!is_null($site)){
-            $post_data['site'] = $site;
-        }
+        if(!is_null($site)) $post_data['site'] = $site;
+        if(!is_null($over_time)) $post_data['overtime'] = $over_time;
+
         return self::curl_post($url,$post_data);
     }
 
