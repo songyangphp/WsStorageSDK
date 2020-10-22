@@ -27,7 +27,7 @@ class StorageManager
             self::$upload_url = $check_url;
         }
 
-        EpiiAdminUi::addPluginData("ws_upload_yun_get_token","?app=upload_api@upload&_upload_yun=1");
+        EpiiAdminUi::addPluginData("ws_upload_yun_get_token","?app=uploadApi@upload&_upload_yun=1");
         EpiiAdminUi::addPluginData("ws_upload_yun_api",$upload_url);
     }
 
