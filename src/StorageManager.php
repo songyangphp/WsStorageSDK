@@ -30,7 +30,7 @@ class StorageManager
         }
 
         EpiiAdminUi::addPluginData("ws_upload_yun_get_token","?app=uploadApi@upload&_upload_yun=1");
-        EpiiAdminUi::addPluginData("ws_upload_yun_api",$upload_url);
+        EpiiAdminUi::addPluginData("ws_upload_yun_api",self::$upload_url);
     }
 
     public static function storage_task_creat($site = null, $over_time = null)
