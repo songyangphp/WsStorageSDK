@@ -10,9 +10,11 @@ class StorageManager
 
     public static $secret;
 
-    public static $upload_url = "http://file.wszx.cc/index.php/storage/index";
+    private static $upload_url = "http://file.wszx.cc/index.php/storage/index";
 
-    public static $check_url = "http://center.wenshi.wszx.cc/?app=storage_config@checkSignAndGetConfig";
+    private static $check_url = "http://center.wenshi.wszx.cc/?app=storage_config@checkSignAndGetConfig";
+
+    private static $get_dir_url = "http://file.wszx.cc/storage/get_cloud_root_dir";
 
     public static $over_time = 180; //token默认过期时间
 
@@ -46,6 +48,21 @@ class StorageManager
             $post_data['site'] = $site;
         }
         return self::curl_post($url,$post_data);
+    }
+
+    public static function get_cloud_root_dir($show_dir = true)
+    {
+        $url = self::$get_dir_url;
+        $post_data = [
+            'app_id' => self::$app_id
+        ];
+
+        $dir_data = self::curl_post($url, $post_data);
+        if($show_dir === true){
+            return json_decode($dir_data,true)['data']['dir'];
+        }else{
+            return $dir_data;
+        }
     }
 
     private static function curl_post($url, $post_data = [])
