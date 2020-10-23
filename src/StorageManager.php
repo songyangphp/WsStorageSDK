@@ -14,7 +14,7 @@ class StorageManager
 
     private static $check_url = "http://center.wenshi.wszx.cc/?app=storage_config@checkSignAndGetConfig";
 
-    private static $get_dir_url = "http://file.wszx.cc/storage/get_cloud_root_dir";
+    private static $get_dir_url = "http://file.wszx.cc/index.php/storage/get_cloud_root_dir";
 
     public static $over_time = 180; //token默认过期时间
 
