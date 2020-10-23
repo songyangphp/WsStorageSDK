@@ -9,9 +9,6 @@
             "email": "475511896@qq.com"
         }
     ],
-    "require": {
-        "epii/admin-center": ">=0.0.1"
-    },
     "autoload": {
         "psr-4": {
             "app\\" : "src/app/",
