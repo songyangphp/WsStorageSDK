@@ -10,7 +10,7 @@ class StorageManager
 
     public static $secret;
 
-    private static $upload_url = "http://file.wszx.cc/index.php/storage/index";
+    private static $upload_url = "http://file.wszx.cc/index.php/storage/index/token/";
 
     private static $check_url = "http://center.wenshi.wszx.cc/?app=storage_config@checkSignAndGetConfig";
 
