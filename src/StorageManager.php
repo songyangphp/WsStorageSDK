@@ -3,6 +3,7 @@
 namespace wslibs\storage_php_sdk;
 
 use epii\admin\ui\EpiiAdminUi;
+use epii\server\Response;
 
 class StorageManager
 {
@@ -48,6 +49,32 @@ class StorageManager
         ];
 
         return self::curl_post($url,$post_data);
+    }
+
+    /**
+     * 此方法用于接口上传base64文件用 例如小程序 app上传 使用之前同样需要初始化调用 StorageManager::storage_init()方法.
+     * @param $base64_file
+     * @param null $over_time
+     * @param null $site
+     * @return mixed
+     */
+    public static function upload_base64_file($base64_file, $over_time = null, $site = null)
+    {
+        if(!empty($over_time)) self::$over_time = $over_time;
+        if(!empty($site)) self::$site = $site;
+
+        $token_result = self::storage_task_creat();
+        if(!$token_result) Response::error("[存储-建立存储任务]token获取失败");
+        $token_result = json_decode($token_result,true);
+        if($token_result['code'] != 1) Response::error("[存储-建立存储任务]".$token_result['msg']);
+        $token = $token_result['data']['token'];
+
+        $url = self::$upload_url . $token;
+        $post_data = [
+            "base64_file" => $base64_file
+        ];
+
+        return self::curl_post($url, $post_data);
     }
 
     public static function get_cloud_root_dir($show_dir = true)
