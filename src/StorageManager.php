@@ -21,7 +21,7 @@ class StorageManager
 
     public static $over_time = 180; //token默认过期时间
 
-    public static $site = null; //自定义存储位置 注意去除字符串两边的 "/"
+    public static $site = null; //自定义存储位置 注意去除字符串两边的 "/" 哦
 
     public static function storage_init($app_id, $secret, $creat_task_ajax_url = null ,$check_url = null, $upload_url = null, $get_dir_url = null)
     {
@@ -51,14 +51,15 @@ class StorageManager
         return self::curl_post($url,$post_data);
     }
 
+
     /**
-     * 此方法用于接口上传base64文件用 例如小程序 app上传 使用之前同样需要初始化调用 StorageManager::storage_init()方法.
+     * 此方法用于接口上传base64文件用 例如小程序 app上传 使用之前同样需要初始化调用 StorageManager::storage_init()方法...
      * @param $base64_file
      * @param null $over_time
      * @param null $site
      * @return mixed
      */
-    public static function upload_base64_file($base64_file, $over_time = null, $site = null)
+    public static function upload_base64_file($base64_file, $ext = null, $over_time = null, $site = null)
     {
         if(!empty($over_time)) self::$over_time = $over_time;
         if(!empty($site)) self::$site = $site;
@@ -71,8 +72,13 @@ class StorageManager
 
         $url = self::$upload_url . $token;
         $post_data = [
-            "base64_file" => $base64_file
+            "base64_file" => $base64_file,
+            "ext" => null
         ];
+
+        if(!is_null($ext)){
+            $post_data['ext'] = $ext;
+        }
 
         return self::curl_post($url, $post_data);
     }
